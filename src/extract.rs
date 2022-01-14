@@ -2,7 +2,7 @@ use bevy_asset::{Assets, Handle};
 use bevy_ecs::prelude::{Query, Res, ResMut};
 use bevy_math::Vec2;
 use bevy_render::prelude::Visibility;
-use bevy_render::texture::DEFAULT_IMAGE_HANDLE;
+use bevy_render::texture::{Image, DEFAULT_IMAGE_HANDLE};
 use bevy_render::RenderWorld;
 use bevy_sprite::ColorMaterial;
 use bevy_transform::prelude::GlobalTransform;
@@ -12,6 +12,7 @@ use bevy_ui::{CalculatedClip, ExtractedUiNode, ExtractedUiNodes, Node};
 pub fn extract_uinodes(
     mut render_world: ResMut<RenderWorld>,
     materials: Res<Assets<ColorMaterial>>,
+    images: Res<Assets<Image>>,
     uinode_query: Query<(
         &Node,
         &GlobalTransform,
@@ -21,7 +22,6 @@ pub fn extract_uinodes(
     )>,
 ) {
     let mut extracted_uinodes = render_world.get_resource_mut::<ExtractedUiNodes>().unwrap();
-    extracted_uinodes.uinodes.clear();
     for (uinode, transform, handle, visibility, clip) in uinode_query.iter() {
         if !visibility.is_visible {
             continue;
@@ -33,6 +33,10 @@ pub fn extract_uinodes(
                 .texture
                 .unwrap_or_else(|| DEFAULT_IMAGE_HANDLE.typed()),
         );
+        // Skip loading images
+        if !images.contains(image.clone_weak()) {
+            continue;
+        }
         extracted_uinodes.uinodes.push(ExtractedUiNode {
             transform: transform.compute_matrix(),
             color,
