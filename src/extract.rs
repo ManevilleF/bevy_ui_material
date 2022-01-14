@@ -8,6 +8,7 @@ use bevy_sprite::ColorMaterial;
 use bevy_transform::prelude::GlobalTransform;
 use bevy_ui::{CalculatedClip, ExtractedUiNode, ExtractedUiNodes, Node};
 
+#[allow(clippy::type_complexity)]
 pub fn extract_uinodes(
     mut render_world: ResMut<RenderWorld>,
     materials: Res<Assets<ColorMaterial>>,

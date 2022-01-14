@@ -71,7 +71,7 @@ pub struct ButtonBundle {
 
 impl Default for ButtonBundle {
     fn default() -> Self {
-        ButtonBundle {
+        Self {
             button: Button,
             interaction: Default::default(),
             focus_policy: Default::default(),
