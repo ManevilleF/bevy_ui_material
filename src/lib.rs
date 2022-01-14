@@ -1,3 +1,12 @@
+//! # bevy_ui_material
+//!
+//! Materials for bevy UI Nodes
+//!
+//! [![workflow](https://github.com/ManevilleF/bevy_ui_material/actions/workflows/rust.yaml/badge.svg)](https://github.com/ManevilleF/bevy_ui_material/actions/workflows/rust.yaml)
+//!
+//! [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+//! [![unsafe forbidden](https://img.shields.io/badge/unsafe-forbidden-success.svg)](https://github.com/rust-secure-code/safety-dance/)
+//!
 // #![forbid(missing_docs)]
 #![forbid(unsafe_code)]
 #![warn(
