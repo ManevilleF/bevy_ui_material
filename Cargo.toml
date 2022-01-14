@@ -2,6 +2,15 @@
 name = "bevy_ui_material"
 version = "0.1.0"
 edition = "2021"
+authors = ["Felix de Maneville <felix.maneville@gmail.com>"]
+license-file = "./LICENSE"
+repository = "https://github.com/ManevilleF/bevy_ui_material"
+readme = "README.md"
+description = "Plugin to use materials for UI"
+keywords = ["bevy", "UI", "material"]
+exclude = ["examples", "docs", ".github", ".gitignore", "assets"]
+documentation = "http://docs.rs/bevy_ui_material"
+categories = ["game-engines", "game-development"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
