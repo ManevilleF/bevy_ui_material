@@ -61,6 +61,9 @@ use bevy_ecs::prelude::*;
 use bevy_render::{RenderApp, RenderStage};
 use bevy_ui::RenderUiSystem::ExtractNode;
 
+/// Plugin ot use UI Nodes with materials
+///
+/// Requires [`bevy_ui::UiPlugin`]
 #[derive(Default)]
 pub struct UiMaterialPlugin;
 
