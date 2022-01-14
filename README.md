@@ -8,6 +8,9 @@ Materials for bevy UI Nodes
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![unsafe forbidden](https://img.shields.io/badge/unsafe-forbidden-success.svg)](https://github.com/rust-secure-code/safety-dance/)
+[![Crates.io](https://img.shields.io/crates/v/bevy_ui_material.svg)](https://crates.io/crates/bevy_ui_material)
+[![Docs.rs](https://docs.rs/bevy_ui_material/badge.svg)](https://docs.rs/bevy_ui_material)
+[![dependency status](https://deps.rs/crate/bevy_ui_material/0.1.0/status.svg)](https://deps.rs/crate/bevy_ui_material)
 
 This [bevy] plugin changes the `bevy_ui` implementation using a material.
 
