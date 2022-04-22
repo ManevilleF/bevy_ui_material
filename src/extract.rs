@@ -22,7 +22,7 @@ pub fn extract_uinodes(
     )>,
 ) {
     let mut extracted_uinodes = render_world.get_resource_mut::<ExtractedUiNodes>().unwrap();
-    for (uinode, transform, handle, visibility, clip) in uinode_query.iter() {
+    for (node, transform, handle, visibility, clip) in uinode_query.iter() {
         if !visibility.is_visible {
             continue;
         }
@@ -42,7 +42,7 @@ pub fn extract_uinodes(
             color,
             rect: bevy_sprite::Rect {
                 min: Vec2::ZERO,
-                max: uinode.size,
+                max: node.size,
             },
             image,
             atlas_size: None,
