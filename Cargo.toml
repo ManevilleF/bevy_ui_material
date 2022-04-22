@@ -23,5 +23,3 @@ bevy_render = "0.7"
 bevy_transform = "0.7"
 bevy_asset = "0.7"
 bevy_app = "0.7"
-
-copyless = "0.1"
