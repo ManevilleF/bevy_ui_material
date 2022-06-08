@@ -1,12 +1,12 @@
 //! This module contains the bundles used in Bevy's UI
-use bevy_asset::Handle;
-use bevy_ecs::bundle::Bundle;
-use bevy_render::view::Visibility;
-use bevy_sprite::ColorMaterial;
-use bevy_transform::prelude::{GlobalTransform, Transform};
-use bevy_ui::prelude::Button;
-use bevy_ui::widget::ImageMode;
-use bevy_ui::{CalculatedSize, FocusPolicy, Interaction, Node, Style};
+use bevy::asset::Handle;
+use bevy::ecs::bundle::Bundle;
+use bevy::render::view::Visibility;
+use bevy::sprite::ColorMaterial;
+use bevy::transform::prelude::{GlobalTransform, Transform};
+use bevy::ui::prelude::Button;
+use bevy::ui::widget::ImageMode;
+use bevy::ui::{CalculatedSize, FocusPolicy, Interaction, Node, Style};
 
 /// The basic UI node
 #[derive(Bundle, Clone, Debug, Default)]
@@ -47,7 +47,7 @@ pub struct ImageBundle {
 }
 
 /// A UI node that is a button
-#[derive(Bundle, Clone, Debug)]
+#[derive(Bundle, Clone, Debug, Default)]
 pub struct ButtonBundle {
     /// Describes the size of the node
     pub node: Node,
@@ -67,20 +67,4 @@ pub struct ButtonBundle {
     pub global_transform: GlobalTransform,
     /// Describes the visibility properties of the node
     pub visibility: Visibility,
-}
-
-impl Default for ButtonBundle {
-    fn default() -> Self {
-        Self {
-            button: Button,
-            interaction: Default::default(),
-            focus_policy: Default::default(),
-            node: Default::default(),
-            style: Default::default(),
-            transform: Default::default(),
-            global_transform: Default::default(),
-            visibility: Default::default(),
-            material: Default::default(),
-        }
-    }
 }

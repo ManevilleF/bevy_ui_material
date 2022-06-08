@@ -44,14 +44,9 @@
 #![forbid(unsafe_code)]
 #![warn(
     clippy::all,
-    clippy::correctness,
-    clippy::suspicious,
-    clippy::style,
-    clippy::complexity,
-    clippy::perf,
     clippy::nursery,
     nonstandard_style,
-    rustdoc::broken_intra_links
+    rustdoc::broken_intra_doc_links
 )]
 
 pub use bundle::*;
@@ -59,14 +54,14 @@ pub use bundle::*;
 mod bundle;
 mod extract;
 
-use bevy_app::{App, Plugin};
-use bevy_ecs::prelude::*;
-use bevy_render::{RenderApp, RenderStage};
-use bevy_ui::RenderUiSystem::ExtractNode;
+use bevy::app::{App, Plugin};
+use bevy::ecs::prelude::*;
+use bevy::render::{RenderApp, RenderStage};
+use bevy::ui::RenderUiSystem::ExtractNode;
 
 /// Plugin ot use UI Nodes with materials
 ///
-/// Requires [`bevy_ui::UiPlugin`]
+/// Requires [`bevy::ui::UiPlugin`]
 #[derive(Default)]
 pub struct UiMaterialPlugin;
 

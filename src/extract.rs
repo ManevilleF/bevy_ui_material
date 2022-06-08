@@ -1,12 +1,12 @@
-use bevy_asset::{Assets, Handle};
-use bevy_ecs::prelude::{Query, Res, ResMut};
-use bevy_math::Vec2;
-use bevy_render::prelude::Visibility;
-use bevy_render::texture::{Image, DEFAULT_IMAGE_HANDLE};
-use bevy_render::RenderWorld;
-use bevy_sprite::ColorMaterial;
-use bevy_transform::prelude::GlobalTransform;
-use bevy_ui::{CalculatedClip, ExtractedUiNode, ExtractedUiNodes, Node};
+use bevy::asset::{Assets, Handle};
+use bevy::ecs::prelude::{Query, Res, ResMut};
+use bevy::math::Vec2;
+use bevy::render::prelude::Visibility;
+use bevy::render::texture::{Image, DEFAULT_IMAGE_HANDLE};
+use bevy::render::RenderWorld;
+use bevy::sprite::{ColorMaterial, Rect};
+use bevy::transform::prelude::GlobalTransform;
+use bevy::ui::{CalculatedClip, ExtractedUiNode, ExtractedUiNodes, Node};
 
 #[allow(clippy::type_complexity)]
 pub fn extract_uinodes(
@@ -34,13 +34,13 @@ pub fn extract_uinodes(
                 .unwrap_or_else(|| DEFAULT_IMAGE_HANDLE.typed()),
         );
         // Skip loading images
-        if !images.contains(image.clone_weak()) {
+        if !images.contains(&image) {
             continue;
         }
         extracted_uinodes.uinodes.push(ExtractedUiNode {
             transform: transform.compute_matrix(),
             color,
-            rect: bevy_sprite::Rect {
+            rect: Rect {
                 min: Vec2::ZERO,
                 max: node.size,
             },
