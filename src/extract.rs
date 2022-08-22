@@ -3,25 +3,26 @@ use bevy::ecs::prelude::{Query, Res, ResMut};
 use bevy::math::Vec2;
 use bevy::render::prelude::Visibility;
 use bevy::render::texture::{Image, DEFAULT_IMAGE_HANDLE};
-use bevy::render::RenderWorld;
+use bevy::render::Extract;
 use bevy::sprite::{ColorMaterial, Rect};
 use bevy::transform::prelude::GlobalTransform;
 use bevy::ui::{CalculatedClip, ExtractedUiNode, ExtractedUiNodes, Node};
 
 #[allow(clippy::type_complexity)]
 pub fn extract_uinodes(
-    mut render_world: ResMut<RenderWorld>,
-    materials: Res<Assets<ColorMaterial>>,
-    images: Res<Assets<Image>>,
-    uinode_query: Query<(
-        &Node,
-        &GlobalTransform,
-        &Handle<ColorMaterial>,
-        &Visibility,
-        Option<&CalculatedClip>,
-    )>,
+    mut extracted_uinodes: ResMut<ExtractedUiNodes>,
+    materials: Extract<Res<Assets<ColorMaterial>>>,
+    images: Extract<Res<Assets<Image>>>,
+    uinode_query: Extract<
+        Query<(
+            &Node,
+            &GlobalTransform,
+            &Handle<ColorMaterial>,
+            &Visibility,
+            Option<&CalculatedClip>,
+        )>,
+    >,
 ) {
-    let mut extracted_uinodes = render_world.get_resource_mut::<ExtractedUiNodes>().unwrap();
     for (node, transform, handle, visibility, clip) in uinode_query.iter() {
         if !visibility.is_visible {
             continue;
